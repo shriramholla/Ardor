@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sherlock</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'main.css' %}">
+	<link rel="icon" href="Docs/head_logo.png">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+	<nav style="background-image: url({% static 'Images/background.png' %});">
+		<ul>
+			<a href="{% url 'index' %}"><li>Home</li></a>
+			<a href="{% url 'forms' %}"><li>Explore</li></a>
+			<a href="{% url 'history' %}"><li>History</li></a>
+		</ul>
+	</nav>
+
+	{% block content %}
+	<div class="page" style="background-image: url({% static 'Images/background.png' %});">
+		
+		<div class="clear-header"></div>
+
+		
+		<div class="card" id="intro">
+			<div class="history">
+				<h1>
+					Previous Exploits
+				</h1>
+				<div class="left">
+					<h1>MOVIES</h1>
+					<ul>
+					{% for movie in movies %}
+						<a href="{% url 'movies' movie=movie.movie %}"><li>{{ movie.movie }}</li></a>
+					{% endfor %}
+					</ul>
+				</div>
+
+				<div class="right">
+					<h1>MUSIC</h1>
+					<ul>
+					{% for song in music %}
+						<a href="{% url 'music' artist=song.artist %}"><li>{{ song.artist }}</li></a>
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	{% endblock %}
+
+	<script type="text/javascript">
+
+		document.addEventListener('wheel', function(e)
+		{
+		  if(e.type != 'wheel')
+		  {
+		    return;
+		  }
+		  let delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
+		  delta = delta * (-20);
+		  document.documentElement.scrollLeft -= delta;
+		  document.getElementsByClassName('page')[0].scrollLeft -= delta;    
+		  e.preventDefault();
+		}, { passive: false});
+
+	</script>
+
+</body>
+</html>

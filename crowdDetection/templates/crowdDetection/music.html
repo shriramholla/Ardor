@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sherlock</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'main.css' %}">
+	<link rel="icon" href="Docs/head_logo.png">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+	<nav style="background-image: url({% static 'Images/background.png' %});">
+		<ul>
+			<a href="{% url 'index' %}"><li>Home</li></a>
+			<a href="{% url 'forms' %}"><li>Explore</li></a>
+			<a href="{% url 'history' %}"><li>History</li></a>
+		</ul>
+	</nav>
+
+	{% block content %}
+	<div class="page" style="background-image: url({% static 'Images/background.png' %});">
+		
+		<div class="clear-header"></div>
+
+		<div class="card">
+			<div class="welcome">
+				<div>
+					<h1>Stats For Today</h1>
+					<span class="thin_italics">{{ message }}</span><br><br>
+					<span class="thin">Music Listened To: {{ music_listened.artist }}</span><br>
+					<span class="thin">Like Factor: {{ music_listened.like_factor }}%</span>
+				</div>
+				
+				<br>
+
+				<div class="graph">
+					<div class="chart">
+						<div class="skills" style="width: {{ music_listened.joy }}%"><span class="thin">Joy - {{ music_listened.joy }}%</span></div>
+					</div>
+
+					<div class="chart">
+						<div class="skills" style="width: {{ music_listened.sorrow }}%"><span class="thin">Sorrow - {{ music_listened.sorrow }}%</span></div>
+					</div>
+
+					<div class="chart">
+						<div class="skills" style="width: {{ music_listened.surprise }}%"><span class="thin">Surprise - {{ music_listened.surprise }}%</span></div>
+					</div>
+					<div class="chart">
+						<div class="skills" style="width: {{ music_listened.anger }}%"><span class="thin">Anger - {{ music_listened.anger }}%</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% for song in music %}
+		<div class="card" id="intro">
+
+			<div class="container">
+				<div class="poster_img">
+					<img src="{{ song.url }}">
+				</div>
+
+				<div class="desc">
+					<h1>{{ song.name }}</h1>
+					<span class="thin_italics">{{ song.song }}</span>
+				</div>
+
+			</div>
+		</div>
+		{% endfor %}
+
+
+	</div>
+	{% endblock %}
+
+	<script type="text/javascript">
+
+		document.addEventListener('wheel', function(e)
+		{
+		  if(e.type != 'wheel')
+		  {
+		    return;
+		  }
+		  let delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
+		  delta = delta * (-20);
+		  document.documentElement.scrollLeft -= delta;
+		  document.getElementsByClassName('page')[0].scrollLeft -= delta;    
+		  e.preventDefault();
+		}, { passive: false});
+
+	</script>
+
+</body>
+</html>

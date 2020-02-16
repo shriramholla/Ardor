@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sherlock</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'main.css' %}">
+	<link rel="icon" href="Docs/head_logo.png">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+	<nav style="background-image: url({% static 'Images/background.png' %});">
+		<ul>
+
+			<a href="{% url 'index' %}"><li>Home</li></a>
+			<a href="{% url 'forms' %}"><li>Explore</li></a>
+			<a href="{% url 'history' %}"><li>History</li></a>
+		</ul>
+	</nav>
+
+	{% block content %}
+	<div class="page" style="background-image: url({% static 'Images/background.png' %});">
+		
+		<div class="clear-header"></div>
+
+		<div class="card">
+			<div class="welcome">
+				<h1 id="welcome">ardor</h1>
+				<span class="thin_italics">The gateway to the future of entertainment</span><br>
+				<p>
+					Welcome to ardor! Explore the project through the given links or click on the link below to get a first-hand experience.
+				</p>
+				<a href="{% url 'forms' %}" class="magic">Feel the Magic</a>
+			</div>
+
+		</div>		
+
+
+	</div>
+	{% endblock %}
+
+	<script type="text/javascript">
+
+		document.addEventListener('wheel', function(e)
+		{
+		  if(e.type != 'wheel')
+		  {
+		    return;
+		  }
+		  let delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
+		  delta = delta * (-20);
+		  document.documentElement.scrollLeft -= delta;
+		  document.getElementsByClassName('page')[0].scrollLeft -= delta;    
+		  e.preventDefault();
+		}, { passive: false});
+
+		var myWin = null;
+
+		function openWin () {
+  			myWin = window.open("{% url 'test' %}", "_blank");
+		}
+
+		function closeWin () {
+		  myWin.close();
+		  window.open("{% url 'closeCam' %}", "_blank");
+		  window.close();
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+@import "compass/css3";
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  font-family: "Roboto", Sans-Serif;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 24px;
+  }
+}
+
+h1 {
+  font-size: 6em;
+  color: #5f2e74;
+  font-family: "Bebas Neue";
+  padding: 0;
+  margin: 0 auto;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  display: flex;
+  object-fit: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+nav {
+  width: 100%;
+  top: 0;
+  margin-top: 0;
+  background-color: black;
+  position: absolute;
+  z-index: 1;
+}
+
+.clear-header {
+  height: 40px;
+}
+
+nav ul {
+  align-content: center;
+  width: 60%;
+  list-style-type: none;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: "Bebas Neue";
+  font-size: 1.25em;
+  text-align: center;
+}
+
+nav li {
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #8e44ad;
+  border-bottom: solid #8244ad 2px;
+  transition: 0.3s;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.card {
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#intro {
+  color: white;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  max-width: 80%;
+}
+
+.desc {
+  margin: 0 auto;
+  max-width: 75%;
+}
+
+.desc p {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.poster_img {
+  float: left;
+  margin: 0 auto;
+}
+
+.poster_img img {
+	height: auto;
+	max-width: 300px;
+	padding: 30px;
+}
+
+.thin_italics {
+  font-style: italic;
+  font-weight: 100;
+  color: white;
+}
+
+.thin {
+  font-weight: 100;
+  color: white;
+}
+
+.welcome {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  align-items: center;
+}
+
+.chart {
+  margin-bottom: 10px;
+}
+
+.skills {
+  text-align: right;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: white;
+  background-color: #5f2e74;
+  border-radius: 7px; 
+  padding-right: 6px;
+  min-width: 120px;
+  max-width: 100%;
+}
+
+form {
+  margin: 0 auto;
+  direction: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form label {
+  display: none;
+}
+
+textarea {
+  background: transparent;
+  outline: none;
+  border: solid white 1px;
+  border-radius: 5px;
+  font-size: 1.25em;
+  font-weight: 200;
+  max-height: 30px;
+  max-width: 300px;
+  color: white;
+  text-align: center;
+  vertical-align: middle; 
+  transition: 0.2s;
+  padding-top: 3px;
+}
+
+textarea:focus {
+  transition: 0.2s;
+  border: solid #5f2e74 1px;
+}
+
+form button {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px; 
+  font-size: 1.2em;
+  transition: 0.3s;
+  border: none;
+  font-weight: 200;
+}
+
+form h1 {
+  font-size: 3.8em;
+}
+
+form .explain {
+  color: white;
+  font-size: 0.9em;
+  max-width: 300px;
+  text-align: center;
+  font-weight: 250;
+}
+
+form button:hover {
+  transition: 0.3s;
+  background-color: #2f163a;
+  color: white;
+  font-weight: 200;
+}
+
+#movie_form img, #music_form img {
+  width: 100px;
+  height: auto;
+  padding-bottom: 10px;
+}
+
+.launch {
+  background: transparent;
+  border: none;
+  font-size: 2.5em;
+}
+
+.welcome p {
+  max-width: 300px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.magic {
+  text-decoration: none;
+  color: white;
+  background-color: #2f163a;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.magic:hover {
+  color: #2f163a;
+  transition: 0.3s;  
+}
+
+.history {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.left {
+	float: left;
+	margin: 0 auto;
+}
+
+.right {
+	float: right;
+	margin: 0 auto;
+}
+
+.left ul, .right ul {
+	list-style-type: none;
+}
+
+.left h1, .right h1 {
+	font-size: 3em;
+}
+
+.left a, .right a {
+	text-decoration: none;
+	color: white;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sherlock</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'main.css' %}">
+	<link rel="icon" href="Docs/head_logo.png">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+	<nav style="background-image: url({% static 'Images/background.png' %});">
+		<ul>
+			<a href="{% url 'index' %}"><li>Home</li></a>
+			<a href="{% url 'forms' %}"><li>Explore</li></a>
+			<a href="{% url 'history' %}"><li>History</li></a>
+		</ul>
+	</nav>
+
+	{% block content %}
+	<div class="page" style="background-image: url({% static 'Images/background.png' %});">
+		
+		<div class="clear-header"></div>
+
+		<div class="card">
+			<div class="welcome">
+				
+				<div class="text">
+					<h1>Stats For Today</h1>
+					<span class="thin_italics">{{ message }}</span><br><br>
+					<span class="thin">Movie Watched: {{ viewed_movie.movie }}</span><br>
+					<span class="thin">Like Factor: {{ viewed_movie.like_factor }}%</span><br>
+				</div>
+
+				<br>
+				
+				<div class="graph">
+					<div class="chart">
+						<div class="skills" style="width: {{ viewed_movie.joy }}%"><span class="thin">Joy - {{ viewed_movie.joy }}%</span></div>
+					</div>
+
+					<div class="chart">
+						<div class="skills" style="width: {{ viewed_movie.sorrow }}%"><span class="thin">Sorrow - {{ viewed_movie.sorrow }}%</span></div>
+					</div>
+
+					<div class="chart">
+						<div class="skills" style="width: {{ viewed_movie.surprise }}%"><span class="thin">Surprise - {{ viewed_movie.surprise }}%</span></div>
+					</div>
+
+					<div class="chart">
+						<div class="skills" style="width: {{ viewed_movie.anger }}%"><span class="thin">Anger - {{ viewed_movie.anger }}%</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% for movie in movies %}
+		<div class="card" id="intro">
+
+			<div class="container">
+				<div class="poster_img">
+					<img src="{{ movie.Image }}">
+				</div>
+
+				<div class="desc">
+					<h1>{{ movie.Title }}</h1>
+					<span>{{ movie.Release_Date }}</span><br>
+					<span class="thin_italics">{{ movie.Genre }}</span><span>   |   {{ movie.Rating }}</span>
+					<p>
+						{{ movie.Desc }}
+					</p>
+				</div>
+
+			</div>
+		</div>
+		{% endfor %}
+
+
+	</div>
+	{% endblock %}
+
+	<script type="text/javascript">
+
+		document.addEventListener('wheel', function(e)
+		{
+		  if(e.type != 'wheel')
+		  {
+		    return;
+		  }
+		  let delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
+		  delta = delta * (-20);
+		  document.documentElement.scrollLeft -= delta;
+		  document.getElementsByClassName('page')[0].scrollLeft -= delta;    
+		  e.preventDefault();
+		}, { passive: false});
+
+	</script>
+
+</body>
+</html>
