@@ -18,7 +18,7 @@ def show_tracks(results):
     return tracklist
 
 def get_songs(emotion):
-    client_credentials_manager = SpotifyClientCredentials('c86a49b3e60e4b4ba5006dbce695ce7e','6f015d4b254842d0a10ddae933152e41')
+    client_credentials_manager = SpotifyClientCredentials('API_KEY','SECRET_KEY')
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     user = 'shriram.holla'
     song_name = 'Random'
