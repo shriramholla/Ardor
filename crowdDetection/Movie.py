@@ -1,6 +1,6 @@
 def get_genre(movie):
     import tmdbsimple as tmdb
-    tmdb.API_KEY = 'da62fb01dfd01c380062d52d5a1f7a90'
+    tmdb.API_KEY = 'API_KEY'
     search = tmdb.Search()
     response = search.movie(query=movie)
     try:
@@ -16,7 +16,7 @@ def get_genre(movie):
 
 def get_id(movie):
     import tmdbsimple as tmdb
-    tmdb.API_KEY = 'da62fb01dfd01c380062d52d5a1f7a90'
+    tmdb.API_KEY = 'API_KEY'
     search = tmdb.Search()
     response = search.movie(query=movie)
     movie = tmdb.Movies(int(search.results[0]['id']))
@@ -24,7 +24,7 @@ def get_id(movie):
 
 def get_similar(movie):
         import tmdbsimple as tmdb
-        tmdb.API_KEY = 'da62fb01dfd01c380062d52d5a1f7a90'
+        tmdb.API_KEY = 'API_KEY'
         search = tmdb.Search()
         id = get_id(movie)
         similar = id.similar_movies()['results']
@@ -40,7 +40,7 @@ def get_similar(movie):
 
 def get_images(movie):
     import tmdbsimple as tmdb
-    tmdb.API_KEY = 'da62fb01dfd01c380062d52d5a1f7a90'
+    tmdb.API_KEY = 'API_KEY'
     search = tmdb.Search()
     response = search.movie(query=movie)
     return ("http://image.tmdb.org/t/p/w185/" + search.results[0]['poster_path'])
